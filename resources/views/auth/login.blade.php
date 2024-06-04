@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Animated Login Form</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{asset('LoginFormResource/style.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">

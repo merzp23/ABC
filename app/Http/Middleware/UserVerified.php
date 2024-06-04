@@ -15,6 +15,9 @@ class UserVerified
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if(auth()->user()->is_admin==1){
+            return redirect()->route('admin.dashboard');
+        }
         if (auth()->user()?->is_verified == 1) {
             if(auth()->user()?->hasFilledProfile()) {
                 return $next($request); // Cho phép truy cập nếu đã xác minh và điền thông tin
