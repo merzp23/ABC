@@ -57,23 +57,15 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
+    Route::get('user/InformationUpdate',[\App\Http\Controllers\ProfileController::class,'updateUserInformation'])->name('user.updateInformation');
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin.verified'])->group(function () {
     Route::get('/', function (){
         return view('admin/dashboard');
     })->name('admin.dashboard');
-    Route::get('/EmployeeManagement',[\App\Http\Controllers\Admin\UserManagementController::class,'index'])->name('admin.userManagement');
-    Route::get('/EmployeeAuthorize',[\App\Http\Controllers\Admin\UserManagementController::class,'indexDuyet'])->name('admin.userAuthorization');
-    Route::get('/EmployeeAuthorize/{id}/approve',[\App\Http\Controllers\Admin\UserManagementController::class,'approve'])->name('admin.userApprove');
-    Route::get('/EmployeeAuthorize/{id}/delete',[\App\Http\Controllers\Admin\UserManagementController::class,'delete'])->name('admin.userDelete');
-    Route::get('/EmployeeManagement/{id}/delete',[\App\Http\Controllers\Admin\UserManagementController::class,'destroy'])->name('admin.userDestroy');
-    Route::get('/EmployeeManagement/{id}',[\App\Http\Controllers\Admin\UserManagementController::class,'getInfo'])->name('admin.updateUser');
-    Route::patch('/EmployeeManagement/{id}',[\App\Http\Controllers\Admin\UserManagementController::class,'updateInfo'])->name('admin.putUpdateUser');
 });
 Route::prefix('user')->middleware(['auth', 'user.verified'])->group(function () {
-
-    Route::get('user/InformationUpdate',[\App\Http\Controllers\ProfileController::class,'updateUserInformation'])->name('user.updateInformation');
     Route::get('/', function (){
         return view('user/dashboard');
     })->name('user.dashboard');
